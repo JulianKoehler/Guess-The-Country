@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { SetStateAction, useEffect, useState } from "react";
 import { MapContainer, TileLayer, Popup, Marker } from "react-leaflet";
 import redMarker from "./styles/redMarker";
 import "./App.css";
@@ -15,7 +15,7 @@ function App() {
   const [distanceOfGuess, setDistanceOfGuess] = useState<number | null>(null);
   const [showCurrentCityMarker, setShowCurrentCityMarker] = useState(false);
   const [guessedCities, setGuessedCities] = useState(0);
-  const [currentHighscore] = useState(useLocalStorage("get", "highscore") ?? 0);
+  const [currentHighscore, setCurrentHighScore] = useState(useLocalStorage("get", "highscore") ?? 0);
   const [newHighscore, setNewHighscore] = useState<number | null>(null);
   const citiesToBeGuessed = useCities();
   const [currentCityIndex, setCurrentCityIndex] = useState(0);
@@ -71,6 +71,7 @@ function App() {
     setGuessedCities(0);
     setKmLeft(1500);
     setCurrentCityIndex(0);
+    setCurrentHighScore(newHighscore as SetStateAction<number>);
     setNewHighscore(null);
     setPlayerMarker(initialMarkerPosition);
   }
@@ -113,14 +114,25 @@ function App() {
           </Marker>
         )}
       </MapContainer>
-      {!isGameOver && (
-        <button
-          disabled={showCurrentCityMarker}
-          onClick={handleAnswerSubmission}>
-          Submit Answer
-        </button>
-      )}
-      {isGameOver && <button onClick={startNewGame}>Play another round</button>}
+      <footer>
+        {currentHighscore ? (
+          <h3>Curren HighScore: {newHighscore ? newHighscore : currentHighscore}</h3>
+        ) : null}
+        {!isGameOver && (
+          <button
+            disabled={showCurrentCityMarker}
+            onClick={handleAnswerSubmission}>
+            Submit Answer
+          </button>
+        )}
+        {isGameOver && (
+          <button
+            disabled={showCurrentCityMarker}
+            onClick={startNewGame}>
+            Play another round
+          </button>
+        )}
+      </footer>
     </div>
   );
 }

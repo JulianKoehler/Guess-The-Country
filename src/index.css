@@ -25,6 +25,12 @@ body {
   padding: 0;
 }
 
+footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
 #root {
   display: flex;
   place-items: center;
