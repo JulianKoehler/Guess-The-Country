@@ -37,14 +37,12 @@ function App() {
   useEffect(() => {
     if (guessedCities > currentHighscore) {
       setNewHighscore(guessedCities);
-    }
-  }, [guessedCities]);
 
-  useEffect(() => {
-    if (isGameOver) {
-      useLocalStorage("set", "highscore", guessedCities);
+      if (isGameOver) {
+        useLocalStorage("set", "highscore", guessedCities);
+      }
     }
-  }, [isGameOver]);
+  }, [guessedCities, isGameOver]);
 
   const distanceText =
     distanceOfGuess! <= 50 ? (
