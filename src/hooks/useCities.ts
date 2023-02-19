@@ -6,7 +6,7 @@ const useCities = () => {
 
   useEffect(() => {
     (async function loadCityData() {
-      const res = await fetch("/src/data/capitalCities.json");
+      const res = await fetch("data/capitalCities.json");
       const { capitalCities } = await res.json();
       setCitiesToBeGuessed(capitalCities);
     })();
