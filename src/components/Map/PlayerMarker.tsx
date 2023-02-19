@@ -1,5 +1,5 @@
 import { LatLngTuple, LeafletMouseEvent } from "leaflet";
-import { ReactNode, useEffect, useState } from "react";
+import { ReactNode } from "react";
 import { Marker, useMap } from "react-leaflet";
 import { usePlayerMarker } from "../../store/playerMakerContext";
 
