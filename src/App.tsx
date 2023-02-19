@@ -116,7 +116,7 @@ function App() {
       </MapContainer>
       <footer>
         {currentHighscore ? (
-          <h3>Curren HighScore: {newHighscore ? newHighscore : currentHighscore}</h3>
+          <h3>Current HighScore: {newHighscore ? newHighscore : currentHighscore}</h3>
         ) : null}
         {!isGameOver && (
           <button
