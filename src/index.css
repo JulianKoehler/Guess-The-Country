@@ -32,6 +32,7 @@ footer {
 }
 
 #root {
+  padding: 2rem 0;
   display: flex;
   place-items: center;
 }

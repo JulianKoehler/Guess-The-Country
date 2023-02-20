@@ -78,8 +78,6 @@ function App() {
     setPlayerMarker(initialMarkerPosition);
   }
 
-  console.log(currentHighscore);
-
   return (
     <div className="app-container">
       <h1>
@@ -101,7 +99,7 @@ function App() {
         </h2>
       )}
       <MapContainer
-        style={{ height: "500px", width: "100%", margin: "30px 0" }}
+        style={{ height: "450px", width: "100%", margin: "30px 0" }}
         center={initialMarkerPosition}
         zoom={5}
         minZoom={4}
@@ -119,9 +117,7 @@ function App() {
         )}
       </MapContainer>
       <footer>
-        {!!currentHighscore ? (
-          <h3>Current HighScore: {newHighscore ? newHighscore : currentHighscore}</h3>
-        ) : null}
+        {!!currentHighscore ? <h3>HighScore: {newHighscore ? newHighscore : currentHighscore}</h3> : null}
         {!isGameOver && (
           <button
             disabled={showCurrentCityMarker}
