@@ -71,10 +71,14 @@ function App() {
     setGuessedCities(0);
     setKmLeft(1500);
     setCurrentCityIndex(0);
-    setCurrentHighScore(newHighscore as SetStateAction<number>);
+    if (guessedCities > currentHighscore) {
+      setCurrentHighScore(newHighscore as SetStateAction<number>);
+    }
     setNewHighscore(null);
     setPlayerMarker(initialMarkerPosition);
   }
+
+  console.log(currentHighscore);
 
   return (
     <div className="app-container">
@@ -115,7 +119,7 @@ function App() {
         )}
       </MapContainer>
       <footer>
-        {currentHighscore ? (
+        {!!currentHighscore ? (
           <h3>Current HighScore: {newHighscore ? newHighscore : currentHighscore}</h3>
         ) : null}
         {!isGameOver && (
